@@ -5,4 +5,4 @@ DebugConsole.prototype.log = function (output) {
 	GapDebugConsole.log(output);
 }
 
-if (typeof navigator.debugconsole == "undefined") navigator.debugconsole = new DebugConsole();
+if (typeof debug == "undefined") debug = new DebugConsole();

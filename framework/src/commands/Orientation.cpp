@@ -14,7 +14,6 @@ Orientation::Orientation(CommandManager *cm)
 
 void Orientation::start(int interval) {
 
-	manager->debug("qt starting orientation");
 	// Create the orientation sensor object
 	orientation = new XQDeviceOrientation(this);
 	
@@ -40,11 +39,34 @@ void Orientation::start(int interval) {
 }
 
 void Orientation::handleOrientationChanged(XQDeviceOrientation::DisplayOrientation o) {
-	manager->debug("qt orientation changed");
-	manager->evaluateJS("navigator.orientation.currentOrientation = " + QString::number(o));
-	manager->evaluateJS("debug.log(navigator.orientation.currentOrientation);");
+	QString oVal = "";
+	if (o == XQDeviceOrientation::OrientationDisplayUp) {
+		oVal = "0";
+	}
+	else if (o == XQDeviceOrientation::OrientationDisplayDown) {
+		oVal = "1";
+	}
+	else if (o == XQDeviceOrientation::OrientationDisplayLeftUp) {
+		oVal = "2";
+	}
+	else if (o == XQDeviceOrientation::OrientationDisplayRightUp) {
+		oVal = "3";
+	}
+	else if (o == XQDeviceOrientation::OrientationDisplayUpwards) {
+		oVal = "4";
+	}
+	else if (o == XQDeviceOrientation::OrientationDisplayDownwards) {
+		oVal = "5";
+	}
+	else {
+		manager->debug("qt invalid orientation");
+		return;
+	}
+
+	manager->evaluateJS("navigator.orientation.setOrientation(" + oVal + ");");
+	//manager->evaluateJS("debug.log('orientation:' + navigator.orientation.currentOrientation);");
 }
 
 void Orientation::stop() {
-	//location->stopUpdates();
+	orientation->close();
 }

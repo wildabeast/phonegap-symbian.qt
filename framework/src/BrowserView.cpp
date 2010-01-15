@@ -55,6 +55,9 @@
 //#include "sym_iap_util.h"
 //#endif
 
+const int consoleHeight = 200;
+const bool showConsole = false;
+
 BrowserView::BrowserView(QWidget *parent)
     : QWidget(parent)
     , m_webView(0)
@@ -139,11 +142,15 @@ void BrowserView::zoomOut()
 void BrowserView::resizeEvent(QResizeEvent *event)
 {
     QWidget::resizeEvent(event);
-
-    int h1 = 0;
-
-    m_webView->setGeometry(0, h1, width(), height() - h1 - 200);
-    m_console->setGeometry(0, height() - 200, width(), 200);
+    int offset = 0;
+    if (showConsole) {
+    	offset = consoleHeight;
+    	m_console->setGeometry(0, height() - consoleHeight, width(), consoleHeight);
+    } else {
+		m_console->hide();
+    }
+    
+    m_webView->setGeometry(0, 0, width(), height() - offset);
     m_console->raise();
 }
 #ifdef Q_OS_SYMBIAN

@@ -9,12 +9,29 @@
 #define ACCELERATION_H_
 
 #include <qobject.h>
-#include "xqlocation.h"
+#include "xqaccsensor.h"
+#include "CommandManager.h"
 
-class Acceleration
+// Forward Declaration
+class CommandManager;
+
+class Acceleration : public QObject,
+	public XQAbstractAccelerationSensorFilter
 	{
+	Q_OBJECT
 public:
-	Acceleration();
+	Acceleration(CommandManager *cm);
+	
+private:
+	XQAccelerationSensor *accel;
+	CommandManager *manager;
+
+protected:
+	bool filter(int& xAcceleration, int& yAcceleration, int& zAcceleration);
+	
+public slots:
+	void start(int interval=1000);
+	void stop();
 	};
 
 #endif /* ACCELERATION_H_ */

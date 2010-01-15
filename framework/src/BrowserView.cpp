@@ -160,8 +160,8 @@ void BrowserView::resizeEvent(QResizeEvent *event)
     int h1 = m_titleBar->sizeHint().height();
 
     m_titleBar->setGeometry(0, 0, width(), h1);
-    m_webView->setGeometry(0, h1, width(), height() - h1 - 100);
-    m_console->setGeometry(0, height() - 100, width(), 100);
+    m_webView->setGeometry(0, h1, width(), height() - h1 - 200);
+    m_console->setGeometry(0, height() - 200, width(), 200);
     m_console->raise();
 }
 #ifdef Q_OS_SYMBIAN
@@ -221,5 +221,5 @@ void BrowserView::navigate(const QUrl &url)
 void BrowserView::debug(QString output)
 {
 	m_console->addItem(output);
-	m_console->scrollToBottom();
+	//m_console->scrollToBottom();
 }

@@ -33,7 +33,7 @@ Changing App Name
 Open the file phonegap-symbian.qt/framework/PhoneGap.pkg, and change PhoneGap to your app name in the following lines:
 
 ; standard SIS file header
-#{"PhoneGap"},(0xE666C00E),1,0,0
+\#{"PhoneGap"},(0xE666C00E),1,0,0
 
 Using the Debug Console
 -------------------------------------------------------------

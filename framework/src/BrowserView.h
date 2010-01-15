@@ -47,7 +47,6 @@
 
 class QUrl;
 class QWebView;
-class TitleBar;
 class QListWidget;
 
 class BrowserView : public QWidget
@@ -72,7 +71,6 @@ private slots:
     void start();
     void setProgress(int percent);
     void finish(bool);
-    void updateTitleBar();
 
 signals:
     void menuButtonClicked();
@@ -81,7 +79,6 @@ protected:
     void resizeEvent(QResizeEvent *event);
 
 private:
-    TitleBar *m_titleBar;
     QWebView *m_webView;
     int m_progress;
     int m_currentZoom;

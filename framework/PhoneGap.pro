@@ -12,7 +12,6 @@ HEADERS += src/commands/Orientation.h \
     src/BrowserView.h \
     src/BrowserWindow.h \
     src/CommandManager.h \
-    src/TitleBar.h \
     src/commands/DebugConsole.h \
     src/commands/Notification.h
 SOURCES += src/commands/Orientation.cpp \
@@ -22,7 +21,6 @@ SOURCES += src/commands/Orientation.cpp \
     src/BrowserWindow.cpp \
     src/CommandManager.cpp \
     src/Main.cpp \
-    src/TitleBar.cpp \
     src/commands/DebugConsole.cpp \
     src/commands/Notification.cpp \
     PhoneGap_reg.rss
@@ -48,5 +46,3 @@ include(src/mobility/vibra/vibra.pri)
 include(src/mobility/location/location.pri)
 include(src/mobility/accesspointmanager/accesspointmanager.pri)
 include(src/mobility/sensor/sensor.pri)
-
-

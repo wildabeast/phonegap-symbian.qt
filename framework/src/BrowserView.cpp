@@ -45,7 +45,6 @@
 #include <QtNetwork>
 #include <QtWebKit>
 
-#include "TitleBar.h"
 #include "CommandManager.h"
 #include "DebugConsole.h"
 #include "xqaccesspointmanager.h"
@@ -58,12 +57,10 @@
 
 BrowserView::BrowserView(QWidget *parent)
     : QWidget(parent)
-    , m_titleBar(0)
     , m_webView(0)
     , m_progress(0)
     , m_currentZoom(100)
 {
-    m_titleBar = new TitleBar(this);
     m_webView = new QWebView(this);
     m_console = new QListWidget(this);
 
@@ -95,7 +92,6 @@ void BrowserView::initialize()
     www.cd("www");
 
     m_webView->load(QUrl::fromUserInput(www.filePath("index.html")));
-    m_titleBar->setTitle(m_webView->url().toString());
     m_webView->page()->settings()->setAttribute(QWebSettings::LocalContentCanAccessRemoteUrls, true);
 #ifdef Q_OS_SYMBIAN
     QTimer::singleShot(0, this, SLOT(setDefaultIap()));
@@ -104,29 +100,16 @@ void BrowserView::initialize()
 
 void BrowserView::start()
 {
-    m_progress = 0;
-    updateTitleBar();
+
 }
 
 void BrowserView::setProgress(int percent)
 {
-    m_progress = percent;
-    updateTitleBar();
-}
 
-void BrowserView::updateTitleBar()
-{
-    QUrl url = m_webView->url();
-    m_titleBar->setHost(url.host());
-    m_titleBar->setTitle(m_webView->title());
-    m_titleBar->setProgress(m_progress);
 }
 
 void BrowserView::finish(bool ok)
 {
-    m_progress = 0;
-    updateTitleBar();
-
     // TODO: handle error
     if (!ok) {
         
@@ -157,9 +140,8 @@ void BrowserView::resizeEvent(QResizeEvent *event)
 {
     QWidget::resizeEvent(event);
 
-    int h1 = m_titleBar->sizeHint().height();
+    int h1 = 0;
 
-    m_titleBar->setGeometry(0, 0, width(), h1);
     m_webView->setGeometry(0, h1, width(), height() - h1 - 200);
     m_console->setGeometry(0, height() - 200, width(), 200);
     m_console->raise();

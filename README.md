@@ -18,9 +18,12 @@ Info on 1-4: http://doc.trolltech.com/4.6-snapshot/requirements-symbian.html
 
 Getting Started
 -------------------------------------------------------------
-Copy or create your index.html and associated js, css, and assets to phonegap-symbian.qt/framework/www/.
-Run Start -> Programs -> Qt for Symbian by Nokia v4.6.0 -> Qt for Symbian command prompt, cd to phonegap-symbian.qt/.
+1. Copy or create your index.html and associated js, css, and assets to phonegap-symbian.qt/framework/www/.
+2. Run Start -> Programs -> Qt for Symbian by Nokia v4.6.0 -> Qt for Symbian command prompt, cd to phonegap-symbian.qt/,
+and run one of the following make targets.
+
 Make targets:
+-------------------------------------------------------------
 - make run : to build your application and run it in the S60 emulator
 - make build : to build a .sis file for deployment to a device
 

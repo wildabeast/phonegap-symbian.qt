@@ -19,6 +19,7 @@ void CommandManager::setWebView( QWebView *view, BrowserView *bview  )
     m_geolocation = new Geolocation(this);
     m_orientation = new Orientation(this);
     m_acceleration = new Acceleration(this);
+    //m_camera = new Camera(this);
 
     attachObjects();
     connect( frame, SIGNAL(javaScriptWindowObjectCleared()), this, SLOT(attachObjects()) );
@@ -31,6 +32,7 @@ void CommandManager::attachObjects()
     frame->addToJavaScriptWindowObject( "GapGeolocation", m_geolocation );
     frame->addToJavaScriptWindowObject( "GapOrientation", m_orientation );
     frame->addToJavaScriptWindowObject( "GapAcceleration", m_acceleration );
+    //frame->addToJavaScriptWindowObject( "GapCamera", m_camera );
     
     //TODO: would prefer to just add one object, like this, but we cannot add objects as properties
     //(see header file CommandManager.h)

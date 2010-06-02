@@ -5,6 +5,7 @@
 
 #include "Acceleration.h"
 #include "BrowserView.h"
+//#include "Camera.h"
 #include "DebugConsole.h"
 #include "Geolocation.h"
 #include "Notification.h"
@@ -17,6 +18,7 @@ class QWebFrame;
 class Geolocation;
 class Orientation;
 class Acceleration;
+//class Camera;
 
 class CommandManager : public QObject
 {
@@ -31,6 +33,7 @@ public:
     Geolocation *m_geolocation;
     Orientation *m_orientation;
     Acceleration *m_acceleration;
+    //Camera *m_camera;
     
    // Q_PROPERTY( Notification notification READ notification )
     //Notification notification() { return *m_notification; };

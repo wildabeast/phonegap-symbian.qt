@@ -52,3 +52,4 @@ Notes
 -------------------------------------------------------------
 - APIs complete so far: Geolocation, Vibration, Accelerometer, Orientation
 - Still in development; report bugs to the phonegap google group at groups.google.com/group/phonegap
+- the files in www folder are indexed when qmake is run ... if you add any new files to the www folder, you need to run qmake again to re-index these files. if you are just changing the files, then you shouldn't have to. but if you find that the web assets are not getting updated when you build, run qmake again.

@@ -30,7 +30,7 @@ FORMS +=
 RESOURCES += 
 symbian { 
     TARGET.UID3 = 0xE666C00E
-    ICON = icon.svg
+    ICON = src/icon.svg
     LIBS += -lesock \
         -linsock \
         -lconnmon \

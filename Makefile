@@ -49,13 +49,12 @@ run: js qmake emulator_debug
 	
 js: lib/phonegap.js
 
-lib/phonegap.js: js/acceleration.js js/accelerometer.js js/camera.js js/debugconsole.js js/geolocation.js js/notification.js js/orientation.js js/position.js
+lib/phonegap.js: js/acceleration.js js/accelerometer.js js/debugconsole.js js/geolocation.js js/notification.js js/orientation.js js/position.js
 	$(RM_RF) lib
 	$(MKPATH) lib
 	$(RM_F) $@
 	$(CAT) js/acceleration.js >> $@
 	$(CAT) js/accelerometer.js >> $@
-	$(CAT) js/camera.js >> $@
 	$(CAT) js/debugconsole.js >> $@
 	$(CAT) js/geolocation.js >> $@
 	$(CAT) js/notification.js >> $@
